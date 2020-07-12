@@ -6,6 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+/* extends SpringBootServletInitializer for deploying on tomcat */
 @SpringBootApplication
 @EnableJpaAuditing
 public class EmployeeApplication extends SpringBootServletInitializer{
@@ -18,6 +19,5 @@ public class EmployeeApplication extends SpringBootServletInitializer{
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeApplication.class, args);
 	}
-	
-	
+
 }

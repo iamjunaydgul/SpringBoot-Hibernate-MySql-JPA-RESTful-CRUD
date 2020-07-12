@@ -1,4 +1,4 @@
-package com.springboot.test.controller;
+package com.springboot.test.restcontroller;
 
 import java.util.List;
 
@@ -18,8 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springboot.test.dao.EmployeeDAO;
 import com.springboot.test.model.Employee;
 
+/* Handles REST APIs */
 @RestController
-@RequestMapping("/company")
+@RequestMapping("/bcm")
 public class EmployeeController {
 
 	@Autowired
@@ -38,7 +39,7 @@ public class EmployeeController {
 	}
 
 	/* getting single employee by id */
-	@GetMapping("/notes/{id}")
+	@GetMapping("/employees/{id}")
 	public ResponseEntity<Object> gettingEmployee(@PathVariable(value = "id") Long employeeID) {
 		Employee emp = employeeDAO.getEmployee(employeeID);
 		if (emp == null) {
@@ -58,7 +59,6 @@ public class EmployeeController {
 		} else {
 			emp.setFirstName(employeeDetails.getFirstName());
 			emp.setLastName(employeeDetails.getLastName());
-
 			emp.setSsn(employeeDetails.getSsn());
 			emp.setDob(employeeDetails.getDob());
 			emp.setHireDate(employeeDetails.getHireDate());

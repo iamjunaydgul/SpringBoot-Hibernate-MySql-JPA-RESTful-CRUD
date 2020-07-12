@@ -1,5 +1,6 @@
 package com.springboot.test.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -13,8 +14,10 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.stereotype.Component;
 
 @Entity
+@Component
 @Table(name = "Employees")
 @EntityListeners(AuditingEntityListener.class)
 public class Employee {
@@ -26,14 +29,10 @@ public class Employee {
 	private String firstName;
 	@NotBlank
 	private String lastName;
-
-	@javax.persistence.Temporal(TemporalType.TIMESTAMP)
-	@LastModifiedDate
-	private Date dob= new Date();
-
-	@javax.persistence.Temporal(TemporalType.TIMESTAMP)
-	@LastModifiedDate
-	private Date hireDate= new Date();;
+	/* date of birth after 2000 */
+	private LocalDate dob= LocalDate.of(2001, 04, 23);
+	/* hire date by default is today date */
+	private LocalDate hireDate= LocalDate.now();
 
 	@NotBlank
 	private String ssn;
@@ -62,19 +61,19 @@ public class Employee {
 		this.lastName = lastName;
 	}
 
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
 
-	public Date getHireDate() {
+	public LocalDate getHireDate() {
 		return hireDate;
 	}
 
-	public void setHireDate(Date hireDate) {
+	public void setHireDate(LocalDate hireDate) {
 		this.hireDate = hireDate;
 	}
 
